@@ -1,7 +1,6 @@
 package pe.edu.upc.emprendeya.controllers;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.internal.bytebuddy.matcher.ModifierMatcher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.emprendeya.dtos.TipodeComunicacionDTO;
@@ -13,7 +12,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/tipodeComunicacion")
+@RequestMapping("/TipodeComunicacion")
 
 public class TipodeComunicacionController {
     @Autowired
@@ -52,6 +51,6 @@ public class TipodeComunicacionController {
     public void goUpdate(@RequestBody TipodeComunicacionDTO dto){
         ModelMapper m=new ModelMapper();
         TipodeComunicacion t=m.map(dto,TipodeComunicacion.class);
-
+        tS.insert(t);
     }
 }

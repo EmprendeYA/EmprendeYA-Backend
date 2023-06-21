@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class TipodeComunicacionServiceImplement implements TComunicacionServices {
-@Autowired
+    @Autowired
     private TComunicacionRepository tR;
 
     @Override

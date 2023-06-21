@@ -3,6 +3,7 @@ package pe.edu.upc.emprendeya.controllers;
 import org.modelmapper.ModelMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.emprendeya.dtos.BenefactorDTO;
 import pe.edu.upc.emprendeya.entities.Benefactor;
@@ -23,13 +24,6 @@ public class BenefactorController {
         bS.insert(b);
     }
 
-    @GetMapping
-    public List<BenefactorDTO> list(){
-        return bS.list().stream().map(x->{
-            ModelMapper m=new ModelMapper();
-            return m.map(x,BenefactorDTO.class);
-        }).collect(Collectors.toList());
-    }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable("id")Integer id){
         bS.delete(id);
@@ -45,5 +39,14 @@ public class BenefactorController {
         ModelMapper m=new ModelMapper();
         Benefactor b = m.map(dto,Benefactor.class);
         bS.insert(b);
+    }
+    @GetMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<BenefactorDTO> list() {
+        return bS.list().stream().map(x->{
+            ModelMapper m=new ModelMapper();
+            return m.map(x,BenefactorDTO.class);
+
+        }).collect(Collectors.toList());
     }
 }

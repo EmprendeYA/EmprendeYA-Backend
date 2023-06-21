@@ -1,4 +1,6 @@
 package pe.edu.upc.emprendeya.dtos;
+import pe.edu.upc.emprendeya.entities.Benefactor;
+
 import javax.persistence.Column;
 
 public class EmprendedorDTO {
@@ -7,6 +9,29 @@ public class EmprendedorDTO {
   private String nombreEmprendedor;
   private String apellidoEmprendedor;
   private int edadEmprendedor;
+  private Benefactor benefactor;
+
+
+  public Benefactor getBenefactor() {
+    return benefactor;
+  }
+
+  @Override
+  public String toString() {
+    return "EmprendedorDTO{" +
+            "id=" + id +
+            ", rubroEmprendedor='" + rubroEmprendedor + '\'' +
+            ", nombreEmprendedor='" + nombreEmprendedor + '\'' +
+            ", apellidoEmprendedor='" + apellidoEmprendedor + '\'' +
+            ", edadEmprendedor=" + edadEmprendedor +
+            ", benefactor=" + benefactor +
+            '}';
+  }
+
+  public void setBenefactor(Benefactor benefactor) {
+    this.benefactor = benefactor;
+  }
+
 
   public int getId() {
     return id;

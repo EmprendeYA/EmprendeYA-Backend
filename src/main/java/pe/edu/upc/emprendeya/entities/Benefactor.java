@@ -1,34 +1,44 @@
 package pe.edu.upc.emprendeya.entities;
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "benefactors")
 public class Benefactor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idBenefactor;
+    private int id;
     @Column(name = "nameBenefactor", length = 60, nullable = false)
     private String nameBenefactor;
     @Column(name = "ocupation",length = 60, nullable = false)
     private String ocupation;
     @Column(name = "interest",length = 60, nullable = false)
     private String interest;
+
+    @Override
+    public String toString() {
+        return "Benefactor{" +
+                "id=" + id +
+                ", nameBenefactor='" + nameBenefactor + '\'' +
+                ", ocupation='" + ocupation + '\'' +
+                ", interest='" + interest + '\'' +
+                '}';
+    }
+
     public Benefactor() {
     }
-    public Benefactor(int idBenefactor, String nameBenefactor, String ocupation, String interest) {
-        this.idBenefactor = idBenefactor;
+    public Benefactor(int id, String nameBenefactor, String ocupation, String interest) {
+        this.id = id;
         this.nameBenefactor = nameBenefactor;
         this.ocupation = ocupation;
         this.interest = interest;
     }
 
-    public int getIdBenefactor() {
-        return idBenefactor;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBenefactor(int idBenefactor) {
-        this.idBenefactor = idBenefactor;
+    public void setId(int idBenefactor) {
+        this.id = idBenefactor;
     }
 
     public String getNameBenefactor() {

@@ -16,6 +16,29 @@ public class Emprendedor {
   private String apellidoEmprendedor;
   @Column(name = "edadEmprendedor", length = 2, nullable = false)
   private int edadEmprendedor;
+  @ManyToOne
+  @JoinColumn(name = "idBenefactor", nullable = false)
+  private Benefactor benefactor;
+
+  public Benefactor getBenefactor() {
+    return benefactor;
+  }
+
+  public void setBenefactor(Benefactor benefactor) {
+    this.benefactor = benefactor;
+  }
+
+  @Override
+  public String toString() {
+    return "Emprendedor{" +
+            "id=" + id +
+            ", rubroEmprendedor='" + rubroEmprendedor + '\'' +
+            ", nombreEmprendedor='" + nombreEmprendedor + '\'' +
+            ", apellidoEmprendedor='" + apellidoEmprendedor + '\'' +
+            ", edadEmprendedor=" + edadEmprendedor +
+            ", benefactor=" + benefactor +
+            '}';
+  }
 
   public Emprendedor() {
   }

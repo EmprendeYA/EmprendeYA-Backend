@@ -6,22 +6,26 @@ import javax.persistence.*;
 public class Pregunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idPregunta;
+    private int id;
     @Column(name = "namePregunta", length = 300, nullable = false)
     private String namePregunta;
+
+    @Column(name = "descripcion", length = 500, nullable = false)
+    private String descripcion;
     public Pregunta() {
     }
-    public Pregunta(int idPregunta, String namePregunta) {
-        this.idPregunta = idPregunta;
+    public Pregunta(int id, String namePregunta, String descripcion) {
+        this.id = id;
         this.namePregunta = namePregunta;
+        this.descripcion = descripcion;
     }
 
-    public int getIdPregunta() {
-        return idPregunta;
+    public int getId() {
+        return id;
     }
 
-    public void setIdPregunta(int idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNamePregunta() {
@@ -30,5 +34,13 @@ public class Pregunta {
 
     public void setNamePregunta(String namePregunta) {
         this.namePregunta = namePregunta;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

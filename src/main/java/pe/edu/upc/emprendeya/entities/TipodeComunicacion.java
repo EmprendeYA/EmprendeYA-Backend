@@ -8,43 +8,76 @@ import javax.persistence.*;
 public class TipodeComunicacion {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idTipodeComunicacion;
-@Column(name = "nameTipodeComunicacion", length = 70, nullable = false)
-    private String nameTipodeComunicacion;
+    private int id;
+@Column(name = "nameTC", length = 70, nullable = false)
+    private String nameTC;
 
-@Column(name = "descripcionTipodeComunicacion", length = 80, nullable = false)
-    private String descripcionTipodeComunicacion;
+@Column(name = "descripcionTC", length = 80, nullable = false)
+    private String descripcionTC;
 
-    public TipodeComunicacion() {
+@ManyToOne
+@JoinColumn(name = "idBenefactor", nullable = false)
+    private Benefactor benefactor;
+
+@ManyToOne
+@JoinColumn(name = "idEmprendedor", nullable = false)
+    private Emprendedor emprendedor;
+
+public TipodeComunicacion() {
     }
 
-    public TipodeComunicacion(int idTipodeComunicacion, String nameTipodeComunicacion, String descripcionTipodeComunicacion) {
-        this.idTipodeComunicacion = idTipodeComunicacion;
-        this.nameTipodeComunicacion = nameTipodeComunicacion;
-        this.descripcionTipodeComunicacion = descripcionTipodeComunicacion;
+    public TipodeComunicacion(int id, String nameTC, String descripcionTC, Benefactor benefactor, Emprendedor emprendedor) {
+        this.id = id;
+        this.nameTC = nameTC;
+        this.descripcionTC = descripcionTC;
+    }
+    @Override
+    public String toString() {
+        return "TipodeComunicacionDTO{" +
+                "id=" + id +
+                ", nameTC='" + nameTC + '\'' +
+                ", descripcionTC='" + descripcionTC + '\'' +
+                ", benefactor=" + benefactor +
+                ", emprendedor=" + emprendedor +
+                '}';
+    }
+    public int getId() {
+        return id;
     }
 
-    public int getIdTipodeComunicacion() {
-        return idTipodeComunicacion;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdTipodeComunicacion(int idTipodeComunicacion) {
-        this.idTipodeComunicacion = idTipodeComunicacion;
+    public String getNameTC() {
+        return nameTC;
     }
 
-    public String getNameTipodeComunicacion() {
-        return nameTipodeComunicacion;
+    public void setNameTC(String nameTC) {
+        this.nameTC = nameTC;
     }
 
-    public void setNameTipodeComunicacion(String nameTipodeComunicacion) {
-        this.nameTipodeComunicacion = nameTipodeComunicacion;
+    public String getDescripcionTC() {
+        return descripcionTC;
     }
 
-    public String getDescripcionTipodeComunicacion() {
-        return descripcionTipodeComunicacion;
+    public void setDescripcionTC(String descripcionTC) {
+        this.descripcionTC = descripcionTC;
     }
 
-    public void setDescripcionTipodeComunicacion(String descripcionTipodeComunicacion) {
-        this.descripcionTipodeComunicacion = descripcionTipodeComunicacion;
+    public Benefactor getBenefactor() {
+        return benefactor;
+    }
+
+    public void setBenefactor(Benefactor benefactor) {
+        this.benefactor = benefactor;
+    }
+
+    public Emprendedor getEmprendedor() {
+        return emprendedor;
+    }
+
+    public void setEmprendedor(Emprendedor emprendedor) {
+        this.emprendedor = emprendedor;
     }
 }

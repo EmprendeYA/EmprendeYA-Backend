@@ -1,15 +1,17 @@
 package pe.edu.upc.emprendeya.dtos;
 
 public class PreguntaDTO {
-    private int idPregunta;
+    private int id;
     private String namePregunta;
 
-    public int getIdPregunta() {
-        return idPregunta;
+    private String descripcion;
+
+    public int getId() {
+        return id;
     }
 
-    public void setIdPregunta(int idPregunta) {
-        this.idPregunta = idPregunta;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNamePregunta() {
@@ -18,5 +20,13 @@ public class PreguntaDTO {
 
     public void setNamePregunta(String namePregunta) {
         this.namePregunta = namePregunta;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 }

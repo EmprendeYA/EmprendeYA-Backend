@@ -2,17 +2,17 @@ package pe.edu.upc.emprendeya.dtos;
 
 
 public class BenefactorDTO {
-    private int idBenefactor;
+    private int id;
     private String nameBenefactor;
     private String ocupation;
     private String interest;
 
-    public int getIdBenefactor() {
-        return idBenefactor;
+    public int getId() {
+        return id;
     }
 
-    public void setIdBenefactor(int idBenefactor) {
-        this.idBenefactor = idBenefactor;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNameBenefactor() {
