@@ -2,10 +2,13 @@ package pe.edu.upc.emprendeya.servicesImplement;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pe.edu.upc.emprendeya.dtos.EmprendedorDTO;
+import pe.edu.upc.emprendeya.dtos.EmprendedorTipoContDTO;
 import pe.edu.upc.emprendeya.entities.Emprendedor;
 import pe.edu.upc.emprendeya.repositories.IEmprendedorRepository;
 import pe.edu.upc.emprendeya.services.IEmprendedorService;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service
 
@@ -34,4 +37,23 @@ public class EmprendedorServicesImplement implements IEmprendedorService{
     return eR.findById(idEmprendedor).orElse(new Emprendedor());
   }
 
+  @Override
+  public List<EmprendedorDTO> reporte08() {
+
+    List<String[]> getempre_edad = eR.getordenarempre();
+    List<EmprendedorDTO> ORDemprDTOs = new ArrayList<>();
+
+    for (String[] data : getempre_edad) {
+      EmprendedorDTO dto = new EmprendedorDTO();
+      dto.setId(Integer.parseInt(data[0]));
+      dto.setApellidoEmprendedor(data[1]);
+      dto.setEdadEmprendedor(Integer.parseInt(data[2]));
+      dto.setNombreEmprendedor(data[3]);
+      dto.setRubroEmprendedor(data[4]);
+      ORDemprDTOs.add(dto);
+    }
+
+    return ORDemprDTOs;
+
+  }
 }

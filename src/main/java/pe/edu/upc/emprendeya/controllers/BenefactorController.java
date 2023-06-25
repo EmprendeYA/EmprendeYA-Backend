@@ -18,6 +18,7 @@ public class BenefactorController {
     @Autowired
     private IBenefactorService bS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insert (@RequestBody BenefactorDTO dto){
         ModelMapper m=new ModelMapper();
         Benefactor b=m.map(dto,Benefactor.class);
