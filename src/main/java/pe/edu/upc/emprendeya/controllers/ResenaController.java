@@ -3,6 +3,7 @@ package pe.edu.upc.emprendeya.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.emprendeya.dtos.EmprendedorResenaDTO;
 import pe.edu.upc.emprendeya.dtos.ResenaDTO;
 import pe.edu.upc.emprendeya.entities.Resena;
 import pe.edu.upc.emprendeya.services.IResenaService;
@@ -45,4 +46,11 @@ public class ResenaController {
         Resena r = m.map(dto,Resena.class);
         rS.insert(r);
     }
+
+    @GetMapping("/resena-count")
+    public List<EmprendedorResenaDTO> getCountResenaByEmprendedor() {
+        List<EmprendedorResenaDTO> emprendedorResenaDTO = rS.reporte01();
+        return emprendedorResenaDTO;
+    }
+
 }

@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.emprendeya.dtos.EmprendedorPreguntaDTO;
 import pe.edu.upc.emprendeya.dtos.PreguntaDTO;
 import pe.edu.upc.emprendeya.entities.Pregunta;
 import pe.edu.upc.emprendeya.services.IPreguntaService;
@@ -45,5 +46,10 @@ public class PreguntaController {
         ModelMapper m=new ModelMapper();
         Pregunta p = m.map(dto,Pregunta.class);
         pS.insert(p);
+    }
+    @GetMapping("/preguntas-count")
+    public List<EmprendedorPreguntaDTO> getPreguntaCountByEmprendedor(){
+        List<EmprendedorPreguntaDTO> EmprendedorPreguntaDTOs = pS.reporte2();
+                return EmprendedorPreguntaDTOs;
     }
 }

@@ -12,12 +12,29 @@ public class Pregunta {
 
     @Column(name = "descripcion", length = 500, nullable = false)
     private String descripcion;
+    @ManyToOne
+    @JoinColumn(name = "idBenefactor", nullable = false)
+    private Benefactor benefactor;
+
+    @ManyToOne
+    @JoinColumn(name = "idEmprendedor", nullable = false)
+    private Emprendedor emprendedor;
     public Pregunta() {
     }
     public Pregunta(int id, String namePregunta, String descripcion) {
         this.id = id;
         this.namePregunta = namePregunta;
         this.descripcion = descripcion;
+    }
+    @Override
+    public String toString() {
+        return "TipodeComunicacionDTO{" +
+                "id=" + id +
+                ", namePregunta='" + namePregunta + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", benefactor=" + benefactor +
+                ", emprendedor=" + emprendedor +
+                '}';
     }
 
     public int getId() {
@@ -42,5 +59,21 @@ public class Pregunta {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Benefactor getBenefactor() {
+        return benefactor;
+    }
+
+    public void setBenefactor(Benefactor benefactor) {
+        this.benefactor = benefactor;
+    }
+
+    public Emprendedor getEmprendedor() {
+        return emprendedor;
+    }
+
+    public void setEmprendedor(Emprendedor emprendedor) {
+        this.emprendedor = emprendedor;
     }
 }

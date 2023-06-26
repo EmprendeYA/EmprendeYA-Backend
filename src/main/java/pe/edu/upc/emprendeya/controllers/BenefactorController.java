@@ -18,6 +18,7 @@ public class BenefactorController {
     @Autowired
     private IBenefactorService bS;
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insert (@RequestBody BenefactorDTO dto){
         ModelMapper m=new ModelMapper();
         Benefactor b=m.map(dto,Benefactor.class);
@@ -25,23 +26,25 @@ public class BenefactorController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete(@PathVariable("id")Integer id){
         bS.delete(id);
     }
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public BenefactorDTO listId(@PathVariable("id")Integer id){
         ModelMapper m=new ModelMapper();
         BenefactorDTO dto=m.map(bS.listId(id),BenefactorDTO.class);
         return dto;
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void goUpdate(@RequestBody BenefactorDTO dto){
         ModelMapper m=new ModelMapper();
         Benefactor b = m.map(dto,Benefactor.class);
         bS.insert(b);
     }
     @GetMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
     public List<BenefactorDTO> list() {
         return bS.list().stream().map(x->{
             ModelMapper m=new ModelMapper();

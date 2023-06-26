@@ -3,6 +3,8 @@ package pe.edu.upc.emprendeya.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.emprendeya.dtos.EmprendedorTDContenidoDTO;
+import pe.edu.upc.emprendeya.dtos.EmprendedorTipoContDTO;
 import pe.edu.upc.emprendeya.dtos.TipodeContenidoDTO;
 import pe.edu.upc.emprendeya.entities.TipodeContenido;
 import pe.edu.upc.emprendeya.services.TContenidoService;
@@ -51,4 +53,21 @@ public class TipodeContenidoController {
         TipodeContenido t=m.map(dto,TipodeContenido.class);
         tS.insert(t);
     }
+
+    @GetMapping("/empren_tc")
+    public List<EmprendedorTipoContDTO> getempren_mayortc() {
+        List<EmprendedorTipoContDTO> EmprendedorTipoContDTOs = tS.reporte09();
+        return EmprendedorTipoContDTOs;
+    }
+
+    @GetMapping("/tdcontenido-count")
+    public List<EmprendedorTDContenidoDTO> getCountTipodeContenidoByEmprendedores() {
+        List<EmprendedorTDContenidoDTO> TDContenidoEmprendedorDTOs = tS.reporte01();
+        return TDContenidoEmprendedorDTOs;
+    }
+    @GetMapping("/contar")
+    public Long contarTipodeContenido() {
+        return tS.contarTipodeContenido();
+    }
+
 }

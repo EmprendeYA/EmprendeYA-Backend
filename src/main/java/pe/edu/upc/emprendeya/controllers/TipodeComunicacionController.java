@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.emprendeya.dtos.TipodeComunicacionDTO;
+import pe.edu.upc.emprendeya.dtos.TipodeComunicacionEmprendedorDTO;
 import pe.edu.upc.emprendeya.entities.TipodeComunicacion;
 import pe.edu.upc.emprendeya.services.TComunicacionServices;
 
@@ -53,4 +54,11 @@ public class TipodeComunicacionController {
         TipodeComunicacion t=m.map(dto,TipodeComunicacion.class);
         tS.insert(t);
     }
+
+    @GetMapping("/tipodecomunicacion-count")
+    public List<TipodeComunicacionEmprendedorDTO> getTipodeComunicacionCountByEmprendedor() {
+        List<TipodeComunicacionEmprendedorDTO> emprendedorTipodeComunicacionDTOs = tS.reporte04();
+        return emprendedorTipodeComunicacionDTOs;
+    }
+
 }

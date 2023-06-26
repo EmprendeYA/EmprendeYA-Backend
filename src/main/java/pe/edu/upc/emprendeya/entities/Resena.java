@@ -8,7 +8,7 @@ public class Resena {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "descripcion", length = 30, nullable = false)
+    @Column(name = "descripcion", length = 200, nullable = false)
     private String descripcion;
     @ManyToOne
     @JoinColumn(name = "idEmprendedor", nullable = false)
