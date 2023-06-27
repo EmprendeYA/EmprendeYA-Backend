@@ -2,6 +2,7 @@ package pe.edu.upc.emprendeya.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.emprendeya.dtos.TipodeComunicacionDTO;
 import pe.edu.upc.emprendeya.dtos.TipodeComunicacionEmprendedorDTO;
@@ -20,6 +21,7 @@ public class TipodeComunicacionController {
     private TComunicacionServices tS;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insert(@RequestBody TipodeComunicacionDTO dto) {
         ModelMapper m = new ModelMapper();
         TipodeComunicacion t = m.map(dto, TipodeComunicacion.class);
@@ -37,18 +39,21 @@ public class TipodeComunicacionController {
         }).collect(Collectors.toList());
     }
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void delete (@PathVariable("id")Integer id){
         tS.delete(id);
 
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public TipodeComunicacionDTO listId(@PathVariable("id")Integer id) {
         ModelMapper m = new ModelMapper();
         TipodeComunicacionDTO dto = m.map(tS.listId(id), TipodeComunicacionDTO.class);
         return dto;
     }
     @PutMapping
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void goUpdate(@RequestBody TipodeComunicacionDTO dto){
         ModelMapper m=new ModelMapper();
         TipodeComunicacion t=m.map(dto,TipodeComunicacion.class);
